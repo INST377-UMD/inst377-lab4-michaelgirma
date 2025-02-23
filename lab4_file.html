@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4</title>
+
+    <!-- CSS -->
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            padding-left:  15px;
+        }
+
+        #section_container{
+            height: 650px;
+
+        }
+
+        #top_container{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 45%;
+            padding-top: 5%;
+        }
+
+        #bottom_container{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 45%;
+        }
+
+        .section_styling{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48%;
+            height: 50%;
+            background-color: aqua;
+            border-radius: 10px;
+            color: black;
+            padding-left: 10px;
+            border: 5px solid white;
+        }
+
+    </style>
+</head>
+<body id="color">
+    <!-- HTML -->
+    <h1 id="title"><strong>INST377 - Lab 4</strong></h1>
+    <div id="section_container">
+        <div id="top_container">
+            <div class="section_styling">
+                <form>
+                    <label>Name:</label>
+                    <input id="alert_name" type="text" required>
+                    <input onclick="showAlert()" type="submit" value="Alert Me!">
+                </form>
+            </div>
+            <div class="section_styling">
+                <button onclick="changeColor()">Change Color</button>
+            </div>
+        </div>
+        <div id="bottom_container">
+            <div class="section_styling">
+                <form>
+                    <label>Text Tester:</label>
+                    <input id="validate_input" type="text" required>
+                    <input id="validate_button" onclick="validateText()" type="submit" value="Validate Text!">
+                </form>
+            </div>
+            <div class="section_styling">
+                <button onclick="addText()">Add Text</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Javascript -->
+    <script>
+        // alert function
+        function showAlert() {
+            var name = document.getElementById("alert_name").value;
+
+            if (name.trim() !== "") { //trim gets rid of white space
+                alert("Hi " + name + "!")
+            } else {
+                return
+            }
+        }
+
+        //change color funtion
+        function changeColor() {
+            var body = document.getElementById("color");
+
+            if (body.style.backgroundColor === "" || body.style.backgroundColor === "black") {
+                body.style.backgroundColor = "purple";
+            } else {
+                body.style.backgroundColor = "black";
+            }
+        }
+
+        // validate text function 
+        function validateText() {
+            var text = document.getElementById("validate_input").value.trim(); 
+            var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            
+            if (text === "") {
+                alert('Text cannot be empty!');
+                return;
+            }
+
+            if (validation.test(text)) {
+                alert('Special character detected!');
+            } else {
+                alert('Text is valid!');
+            }
+        }
+
+        // add text function
+        function addText() {
+            var title = document.getElementById("title")
+            title.innerHTML += " Add Text";
+        }
+    </script>
+</body>
+</html>
